@@ -1,6 +1,9 @@
 from firebasef import rdb
 db = rdb()
-print db.get('/images')
+
+db.update('spottings/', ({
+    'test': 'yay'
+}))
 
 from twitter import tweet # Import basic twitter functions
 from gpiozero import MotionSensor # Import motion sensor

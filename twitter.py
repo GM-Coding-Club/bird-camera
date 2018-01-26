@@ -1,7 +1,7 @@
 from twython import Twython # Import Twitter's API module
 
-# Import keys from auth.py
-from auth import (twitter)
+# Import keys from conf.py
+from conf import (twitter)
 
 # Start Twitter API
 twitter = Twython(
