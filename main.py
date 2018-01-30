@@ -27,7 +27,7 @@ def on_detection():
         camera.capture('./img.jpg')
     try:
         tweet('I spotted: ', './img.jpg')
-        print('Tweeted ./img.jpg with the caption: \'I spotted: \'')
+        # print('Tweeted ./img.jpg with the caption: \'I spotted: \'')
     except IOError:
         print("./img.jpg cannot be parsed/detected; does the file exist & is it a jpg?")
 
