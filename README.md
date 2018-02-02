@@ -23,7 +23,7 @@ twitter = {
 
 firebase = {
     'database_url': 'https://<firebase_project_ID>.firebaseio.com/',
-    'storageBucket': 'g://<Bucket>.appspot.com'
+    'storageBucket': '<Bucket>.appspot.com'
 }
 ```
 
