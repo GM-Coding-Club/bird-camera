@@ -1,13 +1,13 @@
 import os.path
 
+import time
+
 from conf import is_pi
+from conf import tweeting
 
-from firebasef import rdb
-db = rdb()
-
-db.update('spottings/', ({
-    'test': 'yay'
-}))
+import firebasef
+db = firebasef.rdb()
+fs = firebasef.fs()
 
 from twitter import tweet # Import basic twitter functions
 
@@ -26,8 +26,19 @@ def on_detection():
     if is_pi:
         camera.capture('./img.jpg')
     try:
-        tweet('I spotted: ', './img.jpg')
-        # print('Tweeted ./img.jpg with the caption: \'I spotted: \'')
+        if (tweeting):
+            tweet('I spotted: ', './img.jpg')
+            print('Tweeted ./img.jpg with the caption: \'I spotted: \'')
+
+        fname = (str(time.time()) + '.jpg')
+        download_url = fs.add('images/' + fname, fname, './img.jpg')
+        print download_url
+
+        db.push('/spottings', {
+            'image': download_url,
+            'confirmed': False,
+            'time': fname[:-4]
+        })
     except IOError:
         print("./img.jpg cannot be parsed/detected; does the file exist & is it a jpg?")
 
@@ -38,10 +49,10 @@ if not is_pi:
 while True:
     if is_pi:
         pir.wait_for_motion()
-        camera.start_preview()
+        # camera.start_preview()
         on_detection()
         pir.wait_for_no_motion()
-        camera.stop_preview()
+        # camera.stop_preview()
     else:
         print('')
         p = raw_input("Press Enter to take a fake picture from ./img.png")
