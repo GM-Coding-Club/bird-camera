@@ -4,6 +4,7 @@
 
 ```
 is_pi = True # Ensure platform is a pi
+tweeting = True # Disable tweeting
 
 # Twitter keys
 
@@ -21,6 +22,14 @@ twitter = {
 # From https://console.firebase.google.com
 
 firebase = {
-    'database_url': 'https://<firebase_project_ID>.firebaseio.com/'
+    'database_url': 'https://<firebase_project_ID>.firebaseio.com/',
+    'storageBucket': 'g://<Bucket>.appspot.com'
 }
+```
+
+# Things we just expect you to know
+
+```
+AttributeError: 'module' object has no attribute 'python_2_unicode_compatible'
+sudo pip install -U six
 ```
