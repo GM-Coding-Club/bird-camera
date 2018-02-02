@@ -4,7 +4,7 @@
 
 ```
 is_pi = True # Ensure platform is a pi
-tweeting = True # Disable tweeting
+tweeting = True # Enable/disable tweeting
 
 # Twitter keys
 
