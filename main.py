@@ -32,7 +32,7 @@ def on_detection():
 
         fname = (str(time.time()) + '.jpg')
         download_url = fs.add('images/' + fname, fname, './img.jpg')
-        print ('Image download URL' + download_url)
+        print ('Image download URL:' + download_url)
 
         db.push('/spottings', {
             'image': download_url,
