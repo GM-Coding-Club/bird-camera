@@ -8,7 +8,7 @@ from conf import firebase
 cred = credentials.Certificate("./serviceKey.json")
 firebase_admin.initialize_app(cred, {
     'databaseURL': firebase['database_url'],
-    'storageBucket': firebase['storageBucket']
+    'storageBucket': firebase['storage_bucket']
 })
 
 bucket = storage.bucket()
@@ -29,4 +29,4 @@ class fs:
     def add (self, path, fname, file):
         blob = bucket.blob(path)
         blob.upload_from_filename(file)
-        return ('https://firebasestorage.googleapis.com/v0/b/gmsdfeathers-285d1.appspot.com/o/images%2F' + fname + '?alt=media')
+        return ('https://firebasestorage.googleapis.com/v0/b/' + firebase['storage_bucket'] + '/o/images%2F' + fname + '?alt=media')
