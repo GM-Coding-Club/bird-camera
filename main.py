@@ -4,6 +4,7 @@ import time
 
 from conf import is_pi
 from conf import tweeting
+from conf import location
 
 import firebasef
 db = firebasef.rdb()
@@ -37,7 +38,8 @@ def on_detection():
         db.push('/spottings', {
             'image': download_url,
             'confirmed': False,
-            'time': fname[:-4]
+            'time': fname[:-4],
+            'location': location
         })
     except IOError:
         print("./img.jpg cannot be parsed/detected; does the file exist & is it a jpg?")

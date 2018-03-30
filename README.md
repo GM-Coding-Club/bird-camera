@@ -5,6 +5,7 @@
 ```
 is_pi = True # Ensure platform is a pi
 tweeting = True # Enable/disable tweeting
+location = "Home" # Set location of camera
 
 # Twitter keys
 
