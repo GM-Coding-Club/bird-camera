@@ -28,6 +28,19 @@ firebase = {
 }
 ```
 
+# Running the program
+
+```
+Ensure Python 2.x is correctly installed
+Clone the repository and place it in your desired location
+Create conf.py and set up the setting & keys
+Get your firebase service keys and name them serviceKey.json
+Ensure you have firebase-admin install with pip
+sudo pip install firebase-admin
+run: watch -n 300 "python main.py"
+Configure program to autostart on power on
+```
+
 # Things we just expect you to know
 
 ```
