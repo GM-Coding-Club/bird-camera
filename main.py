@@ -23,24 +23,34 @@ if is_pi:
 
     camera = PiCamera()
 
+print("Bird-camera has started")
+
 def on_detection():
     if is_pi:
-        camera.capture('./img.jpg')
+        try:
+            camera.capture('./img.jpg')
+        except:
+            print("Failed to caputre image")
     try:
         if (tweeting):
-            tweet('I spotted: ', './img.jpg')
-            print('Tweeted ./img.jpg with the caption: \'I spotted: \'')
-
+            try:
+                tweet(location + ' spotted:', './img.jpg')
+                print('Tweeted ./img.jpg with the caption: \'I spotted: \'')
+            except:
+                print("Failed to tweet")
         fname = (str(time.time()) + '.jpg')
         download_url = fs.add('images/' + fname, fname, './img.jpg')
         print ('Image download URL:' + download_url)
-
-        db.push('/spottings', {
-            'image': download_url,
-            'confirmed': False,
-            'time': fname[:-4],
-            'location': location
-        })
+        
+        try:
+            db.push('/spottings', {
+                'image': download_url,
+                'confirmed': False,
+                'time': fname[:-4],
+                'location': location
+            })
+        except:
+            print("Failed to push to db")
     except IOError:
         print("./img.jpg cannot be parsed/detected; does the file exist & is it a jpg?")
 
