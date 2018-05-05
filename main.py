@@ -10,7 +10,8 @@ import firebasef
 db = firebasef.rdb()
 fs = firebasef.fs()
 
-from twitter import tweet # Import basic twitter functions
+if (tweeting):
+    from twitter import tweet # Import basic twitter functions
 
 if is_pi:
     from gpiozero import MotionSensor # Import motion sensor
