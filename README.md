@@ -37,7 +37,8 @@ Create conf.py and set up the setting & keys
 Get your firebase service keys and name them serviceKey.json
 Ensure you have firebase-admin install with pip
 sudo pip install firebase-admin
-run: watch -n 300 "python main.py"
+crontab -e
+@reboot (cd /home/pi/bird-camera; python2 main.py) &
 Configure program to autostart on power on
 ```
 
